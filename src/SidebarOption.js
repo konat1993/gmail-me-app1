@@ -1,11 +1,19 @@
-import { IconButton } from '@material-ui/core'
 import React from 'react'
 
+import classNames from 'classnames'
+
 import "./SidebarOption.scss"
+
+const sidebarClassGroup = (props) => {
+    return classNames("sidebarOption", {
+        "sidebarOption--active": props.selected
+    })
+}
+
 export const SidebarOption = (props) => {
     const { Icon, title, number } = props
     return (
-        <div className="sidebarOption">
+        <div className={sidebarClassGroup(props)}>
                 <Icon />
                 <h3>{title}</h3>
                 <p>{number}</p>

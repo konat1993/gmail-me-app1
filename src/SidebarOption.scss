@@ -2,14 +2,44 @@
     display: flex;
     align-items: center;
     height: 40px;
-    padding: 0 10px 0 0;
+    padding: 0 15px 0 0;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     cursor: pointer;
-    color: gray;
-    background-color: red;
+    color: rgb(91, 91, 91);
 
-    .MuiIconButton-root {
-        padding-left: 0;
+    &:hover,
+    &:hover p,
+    &:hover h3 {
+        background-color: #fcecec;
+        color: #c04b37;
+        font-weight: 800;
+    }
+
+    .MuiSvgIcon-root {
+        padding-left: 5px;
+    }
+
+    h3 {
+        flex: 1;
+        margin-left: 10px;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    p {
+        font-weight: 300;
+        display: none;
+    }
+}
+.sidebarOption--active {
+    background-color: #fcecec;
+    color: #c04b37;
+    p {
+        display: inline;
+    }
+    p,
+    h3 {
+        font-weight: 800;
     }
 }
