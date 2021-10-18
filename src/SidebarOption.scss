@@ -1,0 +1,15 @@
+.sidebarOption {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 10px 0 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+    color: gray;
+    background-color: red;
+
+    .MuiIconButton-root {
+        padding-left: 0;
+    }
+}

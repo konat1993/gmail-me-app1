@@ -1,0 +1,46 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid whitesmoke;
+    margin: 0 20px 0 8px;
+
+    &__left {
+        display: flex;
+        align-items: center;
+        img {
+            object-fit: contain;
+            height: 40px;
+            margin-left: 5px;
+        }
+    }
+    &__middle {
+        display: flex;
+        flex: 0.7;
+        align-items: center;
+        background-color: whitesmoke;
+        padding: 5px 10px;
+        margin: 10px;
+        border-radius: 10px;
+
+        .MuiSvgIcon-root {
+            color: gray;
+        }
+
+        input {
+            border: none;
+            width: 100%;
+            padding: 10px;
+            outline-width: 0;
+            font-size: medium;
+            background-color: transparent;
+        }
+
+        .header__inputCaret {
+        }
+    }
+    &__right {
+        display: flex;
+        align-items: center;
+    }
+}
