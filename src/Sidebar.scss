@@ -1,4 +1,7 @@
 .sidebar {
+    flex: 0.3;
+    max-width: 300px;
+    padding-right: 30px;
     &__buttonWrapper {
         width: fit-content;
         margin-top: 15px;

@@ -1,2 +1,30 @@
 .emailList {
+    flex: 1;
+    overflow: scroll;
+
+    &__settings {
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        border-bottom: 1px solid whitesmoke;
+        z-index: 999;
+        padding-right: 10px;
+
+        &__left {
+        }
+
+        &__right {
+        }
+    }
+
+    &__sections {
+        position: sticky;
+        top: 0;
+        display: flex;
+        border-bottom: 1px solid whitesmoke;
+        background-color: white;
+        z-index: 999;
+    }
 }
