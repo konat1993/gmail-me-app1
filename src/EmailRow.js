@@ -1,5 +1,8 @@
 import React from 'react'
 
+import { useDispatch } from 'react-redux'
+import { selectMail } from './features/mailSlice'
+
 import { useHistory } from 'react-router'
 
 import { Checkbox, IconButton } from '@material-ui/core'
@@ -9,10 +12,22 @@ import LabelImportantOutlinedIcon from '@material-ui/icons/LabelImportantOutline
 import "./EmailRow.scss"
 export const EmailRow = (props) => {
     const { id, title, subject, description, time } = props
+    const dispatch = useDispatch()
+
+    const openMail = () => {
+        dispatch(selectMail({
+            id,
+            title,
+            subject,
+            description,
+            time
+        }))
+        history.push("/mail")
+    }
 
     const history = useHistory()
     return (
-        <div className="emailRow" onClick={() => history.push("/mail")}>
+        <div className="emailRow" onClick={openMail}>
             <div className="emailRow__options">
                 <Checkbox />
                 <IconButton>

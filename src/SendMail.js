@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
+import firebase from "firebase"
+import { db } from "./firebase/firebase"
 
 import { useDispatch } from 'react-redux'
 import { closeSendMessage } from './features/mailSlice'
@@ -10,16 +13,27 @@ import CloseIcon from '@material-ui/icons/Close'
 
 import "./SendMail.scss"
 export const SendMail = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm()
+    const { register, handleSubmit, watch, setFocus, formState: { errors } } = useForm()
+
+    useEffect(() => {
+        setFocus("to");
+      }, [setFocus]);
+
     const onSubmit = (formData) => {
-        console.log("formData: ", formData)
+       db.collection("emails").add({
+           to: formData.to,
+           subject: formData.subject,
+           message: formData.message,
+           timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        })
+
+        dispatch(closeSendMessage())
     }
 
     const dispatch = useDispatch()
 
     const handleClickClose = () => {
         dispatch(closeSendMessage())
-        console.log("HIHh")
     }
     return (
         <div className="sendMail">

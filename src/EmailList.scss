@@ -1,16 +1,16 @@
 .emailList {
     flex: 1;
-    overflow: scroll;
 
     &__settings {
         position: sticky;
-        top: 0;
+        top: 70px;
         display: flex;
         justify-content: space-between;
         background-color: white;
         border-bottom: 1px solid whitesmoke;
-        z-index: 999;
+        z-index: 99999;
         padding-right: 10px;
+        padding-left: 5px;
 
         &__left {
         }
@@ -20,11 +20,15 @@
     }
 
     &__sections {
-        position: sticky;
-        top: 0;
+        //position: sticky;
+        //top: 119px;
         display: flex;
         border-bottom: 1px solid whitesmoke;
         background-color: white;
-        z-index: 999;
+        z-index: 999999;
+    }
+
+    &__list {
+        padding-bottom: 6%;
     }
 }

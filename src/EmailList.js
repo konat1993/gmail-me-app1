@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+
+import { db } from './firebase/firebase'
+
 
 import { IconButton } from '@material-ui/core'
 import { Checkbox } from '@material-ui/core'
@@ -19,6 +22,18 @@ import EmailRow from "./EmailRow"
 
 import "./EmailList.scss"
 export const EmailList = () => {
+    const [emails, setEmails] = useState([])
+
+
+    useEffect(() => {
+        db.collection("emails")
+            .orderBy('timestamp', "desc")
+            .onSnapshot(snapshot => setEmails(snapshot.docs.map(doc => ({
+                id: doc.id,
+                data: doc.data()
+            }))))
+    }, [])
+
     return (
         <div className="emailList">
             <div className="emailList__settings">
@@ -56,20 +71,90 @@ export const EmailList = () => {
             </div>
 
             <div className="emailList__list">
+                {
+                    emails.map(({id, data: {to, subject, message, timestamp}}) => (
+                        <EmailRow
+                            key={id}
+                            id={id}
+                            title={to}
+                            subject={subject}
+                            description={message}
+                            time={new Date(timestamp?.seconds * 1000).toUTCString()}
+                        />
+                    ))
+                }
                 <EmailRow
-                    id=""
-                    title="Twitch"
-                    subject="Hey fellow streamer!!!"
-                    description="Test Description"
-                    time="10pm"
-                />
+                            key={"id"}
+                            id={"id"}
+                            title={"to"}
+                            subject={"subject"}
+                            description={"message"}
+                            time={`new Date("timestamp?.seconds * 1000).toUTCString()`}
+                        />
                 <EmailRow
-                    id=""
-                    title="Twitch"
-                    subject="Hey fellow streamer!!!"
-                    description="Test Description"
-                    time="10pm"
-                />
+                            key={"id"}
+                            id={"id"}
+                            title={"to"}
+                            subject={"subject"}
+                            description={"message"}
+                            time={`new Date("timestamp?.seconds * 1000).toUTCString()`}
+                        />
+                <EmailRow
+                            key={"id"}
+                            id={"id"}
+                            title={"to"}
+                            subject={"subject"}
+                            description={"message"}
+                            time={`new Date("timestamp?.seconds * 1000).toUTCString()`}
+                        />
+                <EmailRow
+                            key={"id"}
+                            id={"id"}
+                            title={"to"}
+                            subject={"subject"}
+                            description={"message"}
+                            time={`new Date("timestamp?.seconds * 1000).toUTCString()`}
+                        />
+                <EmailRow
+                            key={"id"}
+                            id={"id"}
+                            title={"to"}
+                            subject={"subject"}
+                            description={"message"}
+                            time={`new Date("timestamp?.seconds * 1000).toUTCString()`}
+                        />
+                <EmailRow
+                            key={"id"}
+                            id={"id"}
+                            title={"to"}
+                            subject={"subject"}
+                            description={"message"}
+                            time={`new Date("timestamp?.seconds * 1000).toUTCString()`}
+                        />
+                <EmailRow
+                            key={"id"}
+                            id={"id"}
+                            title={"to"}
+                            subject={"subject"}
+                            description={"message"}
+                            time={`new Date("timestamp?.seconds * 1000).toUTCString()`}
+                        />
+                <EmailRow
+                            key={"id"}
+                            id={"id"}
+                            title={"to"}
+                            subject={"subject"}
+                            description={"message"}
+                            time={`new Date("timestamp?.seconds * 1000).toUTCString()`}
+                        />
+                <EmailRow
+                            key={"id"}
+                            id={"id"}
+                            title={"to"}
+                            subject={"subject"}
+                            description={"message"}
+                            time={`new Date("timestamp?.seconds * 1000).toUTCString()`}
+                        />
             </div>
         </div>
     )

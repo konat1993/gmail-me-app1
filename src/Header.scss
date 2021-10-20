@@ -1,9 +1,13 @@
 .header {
+    background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid whitesmoke;
-    margin: 0 20px 0 8px;
+    padding: 0 20px 0 8px;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
 
     &__left {
         display: flex;
