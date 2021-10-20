@@ -1,5 +1,8 @@
 import React from 'react'
 
+import { useDispatch } from 'react-redux'
+import { openSendMessage } from './features/mailSlice'
+
 import SidebarOption from "./SidebarOption"
 
 import { Button, IconButton } from '@material-ui/core'
@@ -17,15 +20,19 @@ import PhoneIcon from '@material-ui/icons/Phone'
 
 import "./Sidebar.scss"
 export const Sidebar = () => {
+const dispatch = useDispatch()
+
+    const handleClickOpen = () => {
+        dispatch(openSendMessage())
+    }
     return (
         <div className="sidebar">
-            <div className="sidebar__buttonWrapper">
                 <Button className="sidebar__compose"
+                        onClick={handleClickOpen}
                    /* startIcon={<AddIcon fontSize="large" />} */>
                         <img src="https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png" alt="addImg" />
                         <span>Compose</span>
                 </Button>
-            </div>
             <SidebarOption Icon={InboxIcon} title="Inbox" number={54} selected={true} />
             <SidebarOption Icon={StarIcon} title="Starred" number={28} selected={false}/>
             <SidebarOption Icon={AccessTimeIcon} title="Snoozed" number={4} selected={false}/>
