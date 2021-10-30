@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { auth } from './firebase/firebase';
+import { auth } from '../../services/firebase';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { logout, selectUser } from './features/userSlice';
+import { logout, selectUser } from '../../features/userSlice';
 
 import { Avatar, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';

@@ -28,7 +28,6 @@
             align-items: center;
             border-bottom: 1px solid whitesmoke;
             padding: 20px;
-            position: relative;
 
             h2 {
                 font-weight: 400;
@@ -41,15 +40,20 @@
                 color: #e8ab02;
             }
 
+            .mail__title {
+                flex: 0.8;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
             p {
                 margin-left: 20px;
             }
 
             .mail__time {
-                position: absolute;
-                top: 50%;
-                right: 0;
-                transform: translateY(-50%);
+                white-space: nowrap;
+                margin-left: auto;
                 font-size: 12px;
             }
         }

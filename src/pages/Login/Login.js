@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { auth, googleProvider } from "./firebase/firebase"
+import { auth, googleProvider } from "../../services/firebase"
 
 import { useDispatch } from 'react-redux'
-import { login } from './features/userSlice'
+import { login } from '../../features/userSlice'
 
 import { Button } from '@material-ui/core'
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { db } from './firebase/firebase'
-
+import { db } from '../../services/firebase'
 
 import { IconButton } from '@material-ui/core'
 import { Checkbox } from '@material-ui/core'
@@ -17,10 +16,11 @@ import InboxIcon from '@material-ui/icons/Inbox'
 import LocalOfferIcon from '@material-ui/icons/LocalOffer'
 import PeopleIcon from '@material-ui/icons/People'
 
-import Section from "./Section"
-import EmailRow from "./EmailRow"
+import Section from "../../components/Section/Section"
+import EmailRow from "../../components/EmailRow/EmailRow"
 
 import "./EmailList.scss"
+
 export const EmailList = () => {
     const [emails, setEmails] = useState([])
 
@@ -38,7 +38,7 @@ export const EmailList = () => {
         <div className="emailList">
             <div className="emailList__settings">
                 <div className="settings__left">
-                    <Checkbox/>
+                    <Checkbox />
                     <IconButton>
                         <ArrowDropDownIcon />
                     </IconButton>
@@ -68,18 +68,18 @@ export const EmailList = () => {
             <div className="emailList__list">
                 <div className="emailList__sections">
                     <Section Icon={InboxIcon} title="Primary" color="red" selected />
-                    <Section Icon={PeopleIcon} title="Social" color="#1a73e8"  />
-                    <Section Icon={LocalOfferIcon} title="Promotions" color="green"  />
+                    <Section Icon={PeopleIcon} title="Social" color="#1a73e8" />
+                    <Section Icon={LocalOfferIcon} title="Promotions" color="green" />
                 </div>
                 {
-                    emails.map(({id, data: {to, subject, message, timestamp}}) => (
+                    emails.map(({ id, data: { to, subject, message, timestamp } }) => (
                         <EmailRow
                             key={id}
                             id={id}
                             title={to}
                             subject={subject}
                             description={message}
-                            time={new Date(timestamp?.seconds * 1000).toUTCString()}
+                            time={timestamp?.seconds * 1000}
                         />
                     ))
                 }

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { auth } from './firebase/firebase';
+import { auth } from './services/firebase';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSendMessageIsOpen } from './features/mailSlice';
@@ -12,12 +12,12 @@ import {
   Route,
 } from "react-router-dom";
 
-import Login from "./Login"
-import Header from "./Header"
-import Sidebar from "./Sidebar"
-import Mail from "./Mail"
-import EmailList from "./EmailList"
-import SendMail from "./SendMail"
+import Login from "./pages/Login/Login"
+import Header from "./components/Header/Header"
+import Sidebar from "./components/SideBar/Sidebar"
+import MailDetails from "./pages/MailDetails/MailDetails"
+import EmailList from "./pages/EmailList/EmailList"
+import SendMail from "./components/SendMail/SendMail"
 
 import './App.css';
 const App = () => {
@@ -26,7 +26,7 @@ const App = () => {
 
   useEffect(() => {
     auth.onAuthStateChanged(user => {
-      if(user) {
+      if (user) {
         // the user is logged in
         dispatch(login({
           displayName: user.displayName,
@@ -51,10 +51,10 @@ const App = () => {
           <div className="app">
             <Header />
             <div className="app__body">
-            <Sidebar />
+              <Sidebar />
               <Switch>
                 <Route path="/mail">
-                  <Mail />
+                  <MailDetails />
                 </Route>
                 <Route path="/">
                   <EmailList />

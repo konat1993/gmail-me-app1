@@ -1,7 +1,11 @@
 import React from 'react'
 
+import moment from 'moment';
+import Moment from 'react-moment';
+import 'moment/locale/pl'
+
 import { useDispatch } from 'react-redux'
-import { selectMail } from './features/mailSlice'
+import { selectMail } from '../../features/mailSlice'
 
 import { useHistory } from 'react-router'
 
@@ -10,6 +14,13 @@ import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined'
 import LabelImportantOutlinedIcon from '@material-ui/icons/LabelImportantOutlined'
 
 import "./EmailRow.scss"
+
+const calendarStrings = {
+    lastDay: '[Yesterday at] LT',
+    sameDay: '[Dzisiaj: ] LT',
+    sameElse: 'DD MMM'
+};
+
 export const EmailRow = (props) => {
     const { id, title, subject, description, time } = props
     const dispatch = useDispatch()
@@ -46,7 +57,9 @@ export const EmailRow = (props) => {
                 </h4>
             </div>
             <p className="emailRow__time">
-                {time}
+                <Moment locale="pl" calendar={calendarStrings}>
+                    {moment(time).format()}
+                </Moment>
             </p>
         </div>
     )

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 
 import firebase from "firebase"
-import { db } from "./firebase/firebase"
+import { db } from "../../services/firebase"
 
 import { useDispatch } from 'react-redux'
-import { closeSendMessage } from './features/mailSlice'
+import { closeSendMessage } from '../../features/mailSlice'
 
 import { useForm } from 'react-hook-form'
 
@@ -13,8 +13,9 @@ import CloseIcon from '@material-ui/icons/Close'
 
 import "./SendMail.scss"
 export const SendMail = () => {
-    const { register, handleSubmit, watch, setFocus, formState: { errors } } = useForm()
+    const { register, handleSubmit, setFocus, formState: { errors } } = useForm()
 
+    const dispatch = useDispatch()
     useEffect(() => {
         setFocus("to");
       }, [setFocus]);
@@ -30,7 +31,6 @@ export const SendMail = () => {
         dispatch(closeSendMessage())
     }
 
-    const dispatch = useDispatch()
 
     const handleClickClose = () => {
         dispatch(closeSendMessage())

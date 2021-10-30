@@ -1,7 +1,11 @@
 import React from 'react'
 
+import moment from 'moment';
+import Moment from 'react-moment';
+import 'moment/locale/pl'
+
 import { useSelector } from 'react-redux'
-import { selectOpenMail } from './features/mailSlice'
+import { selectOpenMail } from '../../features/mailSlice'
 
 import { useHistory } from 'react-router'
 
@@ -20,7 +24,13 @@ import UnfoldMoreIcon from '@material-ui/icons/UnfoldMore'
 import PrintIcon from '@material-ui/icons/Print'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
-import "./Mail.scss"
+import "./MailDetails.scss"
+
+const calendarStrings = {
+    sameDay: 'LT',
+    sameElse: 'ddd[.,] DD MMM[,] LT'
+};
+
 export const Mail = () => {
 
     const selectedMail = useSelector(selectOpenMail)
@@ -76,8 +86,15 @@ export const Mail = () => {
                     <div className="mail__important">
                         <LabelImportantIcon />
                     </div>
-                    <p>{selectedMail?.title}</p>
-                    <p className="mail__time">{selectedMail?.time}</p>
+                    <p className="mail__title">{selectedMail?.title}</p>
+                    <p className="mail__time">
+                        <Moment locale="pl" calendar={calendarStrings}>
+                            {moment(selectedMail?.time).format()}
+                        </Moment>
+                        {/* {moment(selectedMail.time).format('llll')} */}
+                        {' '}
+                        ({moment(selectedMail?.time).startOf('seconds').fromNow()})
+                    </p>
                 </div>
 
                 <div className="mail__message">

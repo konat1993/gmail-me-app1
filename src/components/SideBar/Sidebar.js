@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { useDispatch } from 'react-redux'
-import { openSendMessage } from './features/mailSlice'
+import { openSendMessage } from '../../features/mailSlice'
 
-import SidebarOption from "./SidebarOption"
+import SidebarOption from "../SidebarOption/SidebarOption"
 
 import { Button, IconButton } from '@material-ui/core'
 //import AddIcon from '@material-ui/icons/Add'
