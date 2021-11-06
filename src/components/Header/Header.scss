@@ -26,21 +26,30 @@
         padding: 5px 10px;
         margin: 10px;
         border-radius: 10px;
+        label {
+            display: flex;
+            align-items: center;
+            flex-basis: 100%;
 
-        .MuiSvgIcon-root {
-            color: gray;
-        }
+            .MuiSvgIcon-root {
+                cursor: pointer;
+                color: gray;
+            }
 
-        input {
-            border: none;
-            width: 100%;
-            padding: 10px;
-            outline-width: 0;
-            font-size: medium;
-            background-color: transparent;
+            input {
+                width: 100%;
+                border: none;
+                padding: 10px;
+                outline-width: 0;
+                font-size: medium;
+                background-color: transparent;
+            }
         }
 
         .header__inputCaret {
+            width: 28px;
+            margin-left: auto;
+            cursor: pointer;
         }
     }
     &__right {
@@ -49,6 +58,54 @@
 
         .MuiAvatar-root.MuiAvatar-circular {
             cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        &__right {
+            button {
+                display: none;
+            }
+        }
+    }
+}
+@media screen and (max-width: 600px) {
+    .header {
+        padding: 0;
+        &__left {
+            button {
+                position: absolute;
+                left: 10px;
+            }
+            img {
+                display: none;
+            }
+        }
+        &__middle {
+            flex: 1;
+            border-radius: 100px;
+            label {
+                .searchIcon {
+                    display: none;
+                }
+
+                input {
+                    margin-left: 30px;
+                }
+            }
+            .header__inputCaret {
+                display: none;
+            }
+        }
+        &__right {
+            .MuiAvatar-root.MuiAvatar-circular {
+                position: absolute;
+                right: 30px;
+                width: 28px;
+                height: fit-content;
+            }
         }
     }
 }

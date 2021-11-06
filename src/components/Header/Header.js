@@ -33,8 +33,10 @@ export const Header = () => {
                 <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r2.png" alt="gmailImg" />
             </div>
             <div className="header__middle">
-                <SearchIcon />
-                <input type="text" placeholder="Search mail" />
+                <label>
+                    <SearchIcon className="searchIcon" />
+                    <input type="text" placeholder="Search mail" />
+                </label>
                 <ArrowDropDownIcon className="header__inputCaret" />
             </div>
 
@@ -45,7 +47,7 @@ export const Header = () => {
                 <IconButton>
                     <NotificationsIcon />
                 </IconButton>
-                <Avatar onClick={signOut} src={user?.photoUrl}/>
+                <Avatar onClick={signOut} src={user?.photoUrl} />
             </div>
         </div>
     )

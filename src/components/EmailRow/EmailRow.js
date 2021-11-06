@@ -16,8 +16,9 @@ import LabelImportantOutlinedIcon from '@material-ui/icons/LabelImportantOutline
 import "./EmailRow.scss"
 
 const calendarStrings = {
-    lastDay: '[Yesterday at] LT',
+    lastDay: '[Wczoraj: ] LT',
     sameDay: '[Dzisiaj: ] LT',
+    lastWeek: 'DD MMM',
     sameElse: 'DD MMM'
 };
 
@@ -35,7 +36,6 @@ export const EmailRow = (props) => {
         }))
         history.push("/mail")
     }
-
     const history = useHistory()
     return (
         <div className="emailRow" onClick={openMail}>
@@ -60,6 +60,9 @@ export const EmailRow = (props) => {
                 <Moment locale="pl" calendar={calendarStrings}>
                     {moment(time).format()}
                 </Moment>
+                {/* {moment(time).format('llll')} */}
+                {/* {' '} */}
+                {/* ({moment(time).startOf('seconds').fromNow()}) */}
             </p>
         </div>
     )

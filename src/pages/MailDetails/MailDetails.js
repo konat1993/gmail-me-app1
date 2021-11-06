@@ -88,10 +88,10 @@ export const Mail = () => {
                     </div>
                     <p className="mail__title">{selectedMail?.title}</p>
                     <p className="mail__time">
-                        <Moment locale="pl" calendar={calendarStrings}>
+                        {/* <Moment locale="pl" calendar={calendarStrings}>
                             {moment(selectedMail?.time).format()}
-                        </Moment>
-                        {/* {moment(selectedMail.time).format('llll')} */}
+                        </Moment> */}
+                        {moment(selectedMail.time).format('llll')}
                         {' '}
                         ({moment(selectedMail?.time).startOf('seconds').fromNow()})
                     </p>
