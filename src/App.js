@@ -40,7 +40,6 @@ const App = () => {
   const sendMessageIsOpen = useSelector(selectSendMessageIsOpen)
 
   const user = useSelector(selectUser)
-
   return (
     <Router>
 
@@ -52,6 +51,7 @@ const App = () => {
             <Header />
             <div className="app__body">
               <Sidebar />
+              <Sidebar mobileClassName="sidebarMobile" />
               <Switch>
                 <Route path="/mail">
                   <MailDetails />

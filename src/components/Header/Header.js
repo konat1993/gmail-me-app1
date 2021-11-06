@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { auth } from '../../services/firebase';
 
@@ -11,10 +11,11 @@ import SearchIcon from '@material-ui/icons/Search';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import AppsIcon from '@material-ui/icons/Apps';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import { SidebarContext } from '../../context/SidebarContext';
 
 import "./Header.scss"
 export const Header = () => {
-
+    const { activate } = useContext(SidebarContext)
     const dispatch = useDispatch()
     const user = useSelector(selectUser)
 
@@ -27,7 +28,7 @@ export const Header = () => {
     return (
         <div className="header">
             <div className="header__left">
-                <IconButton>
+                <IconButton onClick={() => activate()}>
                     <MenuIcon />
                 </IconButton>
                 <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r2.png" alt="gmailImg" />
