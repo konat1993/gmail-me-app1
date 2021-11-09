@@ -81,20 +81,20 @@ export const Mail = () => {
                 </div>
             </div>
             <div className="mail__body">
+                <p className="mail__time">
+                    {/* <Moment locale="pl" calendar={calendarStrings}>
+                            {moment(selectedMail?.time).format()}
+                        </Moment> */}
+                    {moment(selectedMail.time).format('llll')}
+                    {' '}
+                    ({moment(selectedMail?.time).startOf('seconds').fromNow()})
+                </p>
                 <div className="mail__bodyHeader">
                     <h2>{selectedMail?.subject}</h2>
                     <div className="mail__important">
                         <LabelImportantIcon />
                     </div>
-                    <p className="mail__title">{selectedMail?.title}</p>
-                    <p className="mail__time">
-                        {/* <Moment locale="pl" calendar={calendarStrings}>
-                            {moment(selectedMail?.time).format()}
-                        </Moment> */}
-                        {moment(selectedMail.time).format('llll')}
-                        {' '}
-                        ({moment(selectedMail?.time).startOf('seconds').fromNow()})
-                    </p>
+                    <p className="mail__title">{`<${selectedMail?.title}>`}</p>
                 </div>
 
                 <div className="mail__message">

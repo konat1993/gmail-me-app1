@@ -2,6 +2,7 @@
     flex: 1;
     background-color: whitesmoke;
     object-fit: contain;
+    position: relative;
     &__tools {
         display: flex;
         justify-content: space-between;
@@ -23,45 +24,57 @@
         padding: 20px;
         box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.24);
 
+        .mail__time {
+            white-space: nowrap;
+            margin-left: auto;
+            font-size: 12px;
+        }
         &Header {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
             border-bottom: 1px solid whitesmoke;
             padding: 20px;
 
             h2 {
-                font-weight: 400;
+                font-weight: bold;
                 margin-right: 20px;
+                font-size: 18px;
             }
 
             .mail__important {
                 display: flex;
                 align-items: center;
                 color: #e8ab02;
+                margin-right: 10px;
             }
 
             .mail__title {
                 flex: 0.8;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
+                // white-space: nowrap;
+                // overflow: hidden;
+                // text-overflow: ellipsis;
             }
 
             p {
-                margin-left: 20px;
-            }
-
-            .mail__time {
-                white-space: nowrap;
-                margin-left: auto;
-                font-size: 12px;
+                font-size: 14px;
             }
         }
 
         .mail__message p {
-            padding: 10px;
+            padding: 15px 20px;
             margin-right: 20px;
             overflow-wrap: break-word;
+            word-break: break-word;
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .mail {
+        &__body {
+            &Header {
+            }
         }
     }
 }
