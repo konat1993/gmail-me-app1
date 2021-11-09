@@ -38,11 +38,36 @@
         margin-right: 50px;
 
         .emailList__sections {
-            //position: sticky;
-            //top: 119px;
             display: flex;
             border-bottom: 1px solid whitesmoke;
             z-index: 999999;
+        }
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .emailList {
+        min-width: 0;
+        max-width: 600px;
+        -ms-overflow-style: none; /* for Internet Explorer, Edge */
+        scrollbar-width: none; /* for Firefox */
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            display: none; /* for Chrome, Safari, and Opera */
+        }
+        &__settings {
+            display: none;
+        }
+
+        &__list {
+            overflow: initial;
+            margin-right: 0px;
+            width: 100vw;
+            // width: calc(100vw - 10px);
+            .emailList__sections {
+                display: none;
+            }
         }
     }
 }

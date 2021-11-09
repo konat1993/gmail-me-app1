@@ -7,3 +7,9 @@
     /* width: 100%; */
     display: flex;
 }
+
+@media screen and (max-width: 660px) {
+    .sidebar-vp--hidden {
+        overflow: hidden;
+    }
+}

@@ -5,6 +5,7 @@ export const SidebarContextProvider = ({ children }) => {
     const [open, setOpen] = React.useState(false)
 
     const activate = () => {
+        document.body.classList.toggle("sidebar-vp--hidden")
         setOpen(!open)
     }
     return (

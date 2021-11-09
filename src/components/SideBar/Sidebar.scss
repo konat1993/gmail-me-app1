@@ -30,6 +30,7 @@
         overflow: hidden;
         background-color: white;
         box-shadow: 0 -3px 4px 2px gray;
+        z-index: 9;
     }
     .sidebar__compose {
         margin-top: 15px;
@@ -109,6 +110,7 @@
             .sidebarMobileHeader {
                 height: 60px;
                 display: flex;
+                justify-content: space-between;
                 align-items: center;
                 padding-left: 20px;
                 font-size: 24px;
@@ -116,6 +118,30 @@
                 font-weight: bolder;
                 border-bottom: 1px solid rgba(211, 211, 211, 0.4);
                 margin-bottom: 10px;
+                transition: all 0.1s linear;
+
+                &:hover {
+                    background-color: rgb(243, 234, 234);
+                }
+
+                svg {
+                    margin-right: 25px;
+                    color: rgba(0, 0, 0, 0.8);
+                    border-radius: 100px;
+                    transition: all 0.2s ease-in-out;
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.1);
+                        background-color: rgba(0, 0, 0, 0.75);
+                        color: rgb(255, 255, 255, 0.9);
+                    }
+
+                    &:active {
+                        transition: all 0s linear;
+                        transform: scale(1);
+                    }
+                }
             }
 
             .sidebar__compose {
@@ -142,6 +168,20 @@
         opacity: 1;
         .sidebarWrapper {
             transform: translateX(0);
+            overflow: scroll;
+            -ms-overflow-style: none; /* for Internet Explorer, Edge */
+            scrollbar-width: none; /* for Firefox */
+            overflow-y: scroll;
+
+            &::-webkit-scrollbar {
+                display: none; /* for Chrome, Safari, and Opera */
+            }
+            .sidebarMobileHeader {
+                position: sticky;
+                top: 0;
+                background-color: whitesmoke;
+                z-index: 999;
+            }
         }
         .sidebar__footer {
             justify-content: center;

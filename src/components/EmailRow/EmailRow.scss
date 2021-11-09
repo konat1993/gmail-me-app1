@@ -6,24 +6,50 @@
     z-index: 999;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     &:hover {
         border-top: 1px solid whitesmoke;
         padding-top: 4px;
         box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.24);
     }
 
+    .emailRow__avatar {
+        display: none;
+    }
+
     &__options {
         display: flex;
-        margin-right: 20px;
+        align-items: center;
+        margin-right: 5px;
+        button {
+            padding-left: 2px;
+            padding-right: 2px;
+            height: 35px;
+            width: 35px;
+
+            &:nth-child(3) {
+                color: rgb(238, 210, 0);
+            }
+        }
+
+        svg {
+            font-size: 20px;
+        }
     }
+
     &__title {
-        font-size: 13px;
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-right: 20px;
+        width: 75px;
+        min-width: 162px;
     }
     &__message {
-        max-width: 500px;
         font-size: 13px;
         overflow: hidden;
-        margin-right: 50px;
+        margin-right: 75px;
 
         h4 {
             padding-left: 5px;
@@ -34,7 +60,16 @@
             span {
                 white-space: nowrap;
                 text-overflow: ellipsis;
-                color: gray;
+
+                &:first-child {
+                    color: black;
+                }
+                &:nth-child(2) {
+                    color: rgb(79, 79, 79);
+                }
+                &:nth-child(3) {
+                    color: gray;
+                }
             }
         }
     }
@@ -43,6 +78,129 @@
         font-size: 12px;
         margin-left: auto;
         white-space: nowrap;
-        background-color: white;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .emailRow {
+        height: 80px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        align-items: flex-start;
+        position: relative;
+        &:hover {
+            padding-top: 9px;
+        }
+        &__options {
+            button {
+                position: absolute;
+                &:nth-child(2) {
+                    bottom: 0;
+                    right: 5px;
+                }
+                &:nth-child(3) {
+                    bottom: 41px;
+                    left: 38px;
+                    height: 38px;
+                    width: 38px;
+                }
+            }
+            > span {
+                position: absolute;
+                bottom: 41px;
+                left: 8px;
+            }
+        }
+        &__title {
+            position: absolute;
+            left: 75px;
+            bottom: 52px;
+        }
+        &__message {
+            margin-right: 30px;
+
+            h4 {
+                span {
+                    &:first-child {
+                        position: absolute;
+                        bottom: 30px;
+                        left: 50px;
+                    }
+                    &:nth-child(2) {
+                        display: none;
+                    }
+                    &:nth-child(3) {
+                        position: absolute;
+                        bottom: 10px;
+                        left: 50px;
+                        width: 70vw;
+                        max-width: 550px;
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+        &__time {
+            padding-right: 10px;
+            height: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .emailRow {
+        .emailRow__avatar {
+            display: block;
+            position: absolute;
+            bottom: 38px;
+            .MuiAvatar-root {
+                width: 30px;
+                height: 30px;
+            }
+        }
+        &__options {
+            button {
+                position: absolute;
+                &:nth-child(2) {
+                    bottom: 0;
+                    right: 5px;
+                }
+                &:nth-child(3) {
+                    left: 38px;
+                    height: 38px;
+                    width: 38px;
+                }
+            }
+            > span {
+                display: none;
+            }
+        }
+        &__title {
+            position: absolute;
+            left: 75px;
+        }
+        &__message {
+            margin-right: 30px;
+            h4 {
+                span {
+                    &:first-child {
+                        position: absolute;
+                        left: 50px;
+                    }
+                    &:nth-child(2) {
+                        display: none;
+                    }
+                    &:nth-child(3) {
+                        position: absolute;
+                        left: 50px;
+                        width: calc(100vw - 120px);
+                    }
+                }
+            }
+        }
+        &__time {
+            padding-right: 10px;
+            height: 100%;
+        }
     }
 }

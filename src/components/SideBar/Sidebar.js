@@ -17,6 +17,7 @@ import NoteIcon from '@material-ui/icons/Note'
 import PersonIcon from '@material-ui/icons/Person'
 import DuoIcon from '@material-ui/icons/Duo'
 import PhoneIcon from '@material-ui/icons/Phone'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { SidebarContext } from '../../context/SidebarContext'
 import classNames from 'classnames'
 import "./Sidebar.scss"
@@ -57,7 +58,10 @@ export const Sidebar = (props) => {
         >
             <div onScroll={handleScroll} className="sidebarWrapper" onClick={stopPropagation}>
                 <div className="sidebarMobileHeader">
-                    Gmail
+                    <span>
+                        Gmail
+                    </span>
+                    <ArrowBackIcon onClick={(e) => activate(e)} />
                 </div>
                 <div className={`${scroll ? 'sidebar-scroll' : ''}`}>
 
@@ -90,7 +94,7 @@ export const Sidebar = (props) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
