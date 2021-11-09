@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import moment from 'moment';
-import Moment from 'react-moment';
 import 'moment/locale/pl'
 
 import { useSelector } from 'react-redux'
@@ -26,16 +25,17 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
 import "./MailDetails.scss"
 
-const calendarStrings = {
-    sameDay: 'LT',
-    sameElse: 'ddd[.,] DD MMM[,] LT'
-};
+
 
 export const Mail = () => {
 
     const selectedMail = useSelector(selectOpenMail)
 
     const history = useHistory()
+
+    useEffect(() => {
+        !selectedMail && history.push("/")
+    }, [selectedMail])
     return (
         <div className="mail">
             <div className="mail__tools">
@@ -82,10 +82,7 @@ export const Mail = () => {
             </div>
             <div className="mail__body">
                 <p className="mail__time">
-                    {/* <Moment locale="pl" calendar={calendarStrings}>
-                            {moment(selectedMail?.time).format()}
-                        </Moment> */}
-                    {moment(selectedMail.time).format('llll')}
+                    {moment(selectedMail?.time).format('llll')}
                     {' '}
                     ({moment(selectedMail?.time).startOf('seconds').fromNow()})
                 </p>
