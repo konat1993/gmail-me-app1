@@ -91,6 +91,16 @@
         &:hover {
             padding-top: 9px;
         }
+
+        .emailRow__avatar {
+            display: block;
+            position: absolute;
+            bottom: 38px;
+            .MuiAvatar-root {
+                width: 30px;
+                height: 30px;
+            }
+        }
         &__options {
             button {
                 position: absolute;
@@ -106,9 +116,7 @@
                 }
             }
             > span {
-                position: absolute;
-                bottom: 41px;
-                left: 8px;
+                display: none;
             }
         }
         &__title {
@@ -149,15 +157,6 @@
 
 @media screen and (max-width: 660px) {
     .emailRow {
-        .emailRow__avatar {
-            display: block;
-            position: absolute;
-            bottom: 38px;
-            .MuiAvatar-root {
-                width: 30px;
-                height: 30px;
-            }
-        }
         &__options {
             button {
                 position: absolute;

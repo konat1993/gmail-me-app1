@@ -18,6 +18,7 @@
     flex-direction: column;
     border: 1px solid whitesmoke;
     box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.24);
+    z-index: 999;
 
     &__header {
         display: flex;
@@ -45,7 +46,8 @@
         flex: 1;
         flex-direction: column;
 
-        input, textarea {
+        input,
+        textarea {
             height: 30px;
             padding: 10px;
             box-sizing: content-box;
@@ -79,6 +81,105 @@
                 text-transform: capitalize;
                 margin: 15px;
                 background-color: #3079ed;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .sendMail {
+        background-color: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        max-width: none;
+        border-top-left-radius: none;
+        border-top-right-radius: none;
+        border: none;
+        box-shadow: none;
+        z-index: 9999;
+
+        &__header {
+            .header__content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                padding: 0;
+            }
+
+            .header__content-left {
+                display: flex;
+                align-items: center;
+                * {
+                    color: black;
+                }
+            }
+            .header__content-left {
+                display: flex;
+                align-items: center;
+                * {
+                    color: black;
+                }
+                h3 {
+                    color: black;
+                    font-size: 20px;
+                    font-weight: 400;
+                    margin-left: 10px;
+                }
+            }
+            .header__content-right {
+                display: flex;
+                align-items: center;
+                * {
+                    color: black;
+                }
+            }
+        }
+
+        form {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+
+            input,
+            textarea {
+                height: 30px;
+                padding: 10px;
+                box-sizing: content-box;
+                outline: none;
+                border: none;
+                border-bottom: 1px solid rgb(238, 238, 238);
+                font-size: 14px;
+
+                &::placeholder {
+                    color: #777;
+                }
+            }
+
+            .sendMail__error {
+                background-color: white;
+                color: red;
+                text-align: right;
+                padding: 2px;
+                font-size: 12px;
+            }
+
+            textarea {
+                flex: 1;
+                display: flex;
+                align-items: flex-end;
+                resize: none;
+            }
+
+            .sendMail__options {
+                .sendMail__send {
+                    text-transform: capitalize;
+                    margin: 15px;
+                    background-color: #3079ed;
+                }
             }
         }
     }

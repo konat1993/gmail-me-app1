@@ -70,10 +70,23 @@
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 660px) {
     .mail {
-        &__body {
-            &Header {
+        &__tools {
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            .tools__left {
+                flex-wrap: wrap;
+
+                button {
+                    padding: 5px;
+                }
+            }
+            .tools__right {
+                button {
+                    padding: 5px;
+                }
             }
         }
     }

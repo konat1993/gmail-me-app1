@@ -45,10 +45,10 @@
     }
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 850px) {
     .emailList {
         min-width: 0;
-        max-width: 600px;
+        max-width: 850px;
         -ms-overflow-style: none; /* for Internet Explorer, Edge */
         scrollbar-width: none; /* for Firefox */
         overflow-y: scroll;
@@ -66,6 +66,30 @@
             width: 100vw;
             .emailList__sections {
                 display: none;
+            }
+        }
+        .email__composeBtn {
+            background-color: rgb(153, 224, 243);
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+            border-radius: 15px;
+            z-index: 999;
+
+            .composeBtn {
+                padding-left: 10px;
+                padding-right: 15px;
+                border-radius: 15px;
+
+                svg {
+                    font-size: 22px;
+                }
+
+                .compose__text {
+                    text-transform: capitalize;
+                    font-weight: bolder;
+                    padding: 5px 0 5px 10px;
+                }
             }
         }
     }

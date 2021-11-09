@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 
 import { db } from '../../services/firebase'
 
-import { IconButton } from '@material-ui/core'
+import { Button, IconButton } from '@material-ui/core'
 import { Checkbox } from '@material-ui/core'
-
+import CreateIcon from '@material-ui/icons/Create';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import RedoIcon from '@material-ui/icons/Redo'
@@ -20,10 +20,13 @@ import Section from "../../components/Section/Section"
 import EmailRow from "../../components/EmailRow/EmailRow"
 
 import "./EmailList.scss"
+import { useDispatch } from 'react-redux'
+import { openSendMessage } from '../../features/mailSlice'
 
 export const EmailList = () => {
     const [emails, setEmails] = useState([])
 
+    const dispatch = useDispatch()
 
     useEffect(() => {
         db.collection("emails")
@@ -34,6 +37,9 @@ export const EmailList = () => {
             }))))
     }, [])
 
+    const handleClickOpen = () => {
+        dispatch(openSendMessage())
+    }
     return (
         <div className="emailList">
             <div className="emailList__settings">
@@ -83,6 +89,16 @@ export const EmailList = () => {
                         />
                     ))
                 }
+            </div>
+
+            <div className="email__composeBtn">
+                <Button className="composeBtn"
+                    onClick={handleClickOpen}
+                >
+
+                    <CreateIcon />
+                    <span className="compose__text">Compose</span>
+                </Button>
             </div>
         </div>
     )

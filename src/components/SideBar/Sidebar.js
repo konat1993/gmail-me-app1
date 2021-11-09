@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 
 import { useDispatch } from 'react-redux'
 import { openSendMessage } from '../../features/mailSlice'
+import { SidebarContext } from '../../context/SidebarContext'
 
 import SidebarOption from "../SidebarOption/SidebarOption"
 
@@ -18,7 +19,6 @@ import PersonIcon from '@material-ui/icons/Person'
 import DuoIcon from '@material-ui/icons/Duo'
 import PhoneIcon from '@material-ui/icons/Phone'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import { SidebarContext } from '../../context/SidebarContext'
 import classNames from 'classnames'
 import "./Sidebar.scss"
 

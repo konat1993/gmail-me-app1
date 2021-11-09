@@ -8,8 +8,12 @@ import { closeSendMessage } from '../../features/mailSlice'
 
 import { useForm } from 'react-hook-form'
 
-import { Button } from '@material-ui/core'
+import { Button, IconButton } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import SendIcon from '@material-ui/icons/Send';
+import AttachmentIcon from '@material-ui/icons/Attachment';
+import MoreVertIcon from '@material-ui/icons/MoreVert'
 
 import "./SendMail.scss"
 export const SendMail = () => {
@@ -18,19 +22,17 @@ export const SendMail = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         setFocus("to");
-      }, [setFocus]);
-
+    }, [setFocus]);
     const onSubmit = (formData) => {
-       db.collection("emails").add({
-           to: formData.to,
-           subject: formData.subject,
-           message: formData.message,
-           timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        db.collection("emails").add({
+            to: formData.to,
+            subject: formData.subject,
+            message: formData.message,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
         })
 
         dispatch(closeSendMessage())
     }
-
 
     const handleClickClose = () => {
         dispatch(closeSendMessage())
@@ -38,17 +40,43 @@ export const SendMail = () => {
     return (
         <div className="sendMail">
             <div className="sendMail__header">
-                <h3>New message</h3>
-                <CloseIcon className="sendMail__close" onClick={handleClickClose} />
+                {
+                    window.innerWidth > 850 ? (
+                        <>
+                            <h3>New message</h3>
+                            <CloseIcon className="sendMail__close" onClick={handleClickClose} />
+                        </>
+                    ) : (
+                        <div className="header__content">
+                            <div className="header__content-left">
+                                <IconButton onClick={handleClickClose}>
+                                    <ArrowBackIcon />
+                                </IconButton>
+                                <h3>Compose</h3>
+                            </div>
+                            <div className="header__content-right">
+                                <IconButton>
+                                    <AttachmentIcon />
+                                </IconButton>
+                                <IconButton>
+                                    <SendIcon />
+                                </IconButton>
+                                <IconButton>
+                                    <MoreVertIcon />
+                                </IconButton>
+                            </div>
+                        </div>
+                    )
+                }
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input type="email" {...register("to", {required: true})} placeholder="Adresaci"  />
+                <input type="email" {...register("to", { required: true })} placeholder="Adresaci" />
                 {errors.to && <p className="sendMail__error">This field is required!</p>}
-                <input type="text" {...register("subject", {required: true})} placeholder="Subject"  />
+                <input type="text" {...register("subject", { required: true })} placeholder="Subject" />
                 {errors.subject && <p className="sendMail__error">This field is required!</p>}
 
-                <textarea type="text" {...register("message", {required: true})} placeholder="Message..."  />
+                <textarea type="text" {...register("message", { required: true })} placeholder="Message..." />
                 {errors.message && <p className="sendMail__error">This field is required!</p>}
 
 
