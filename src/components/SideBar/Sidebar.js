@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import { useDispatch } from 'react-redux'
 import { openSendMessage } from '../../features/mailSlice'
@@ -18,13 +18,19 @@ import PersonIcon from '@material-ui/icons/Person'
 import DuoIcon from '@material-ui/icons/Duo'
 import PhoneIcon from '@material-ui/icons/Phone'
 import { SidebarContext } from '../../context/SidebarContext'
-
+import classNames from 'classnames'
 import "./Sidebar.scss"
-export const Sidebar = (props) => {
-    const { mobileClassName } = props
 
+const sidebarClassGroup = (props, open) => {
+    return classNames(props.mobileClassName ? props.mobileClassName : "sidebar", {
+        'sidebar-activate': open
+    })
+}
+
+export const Sidebar = (props) => {
     const { activate, open } = useContext(SidebarContext)
 
+    const [scroll, setScroll] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -35,22 +41,33 @@ export const Sidebar = (props) => {
     const stopPropagation = (e) => {
         e.stopPropagation()
     }
-    console.log(open)
+
+    const handleScroll = (e) => {
+        if (e.target.scrollTop > 0) {
+            setScroll(true)
+        } else {
+            setScroll(false)
+        }
+    }
+
     return (
         <div
-            className={`${mobileClassName ? mobileClassName : 'sidebar'} ${open ? 'sidebar-activate' : ''}`}
+            className={sidebarClassGroup(props, open)}
             onClick={(e) => activate(e)}
         >
-            <div className="sidebarWrapper" onClick={stopPropagation}>
+            <div onScroll={handleScroll} className="sidebarWrapper" onClick={stopPropagation}>
                 <div className="sidebarMobileHeader">
                     Gmail
                 </div>
-                <Button className="sidebar__compose"
-                    onClick={handleClickOpen}
-                   /* startIcon={<AddIcon fontSize="large" />} */>
-                    <img src="https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png" alt="addImg" />
-                    <span className="compose__text">Compose</span>
-                </Button>
+                <div className={`${scroll ? 'sidebar-scroll' : ''}`}>
+
+                    <Button className="sidebar__compose"
+                        onClick={handleClickOpen}
+                    >
+                        <img src="https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png" alt="addImg" />
+                        <span className="compose__text">Compose</span>
+                    </Button>
+                </div>
                 <SidebarOption Icon={InboxIcon} title="Inbox" number={54} selected={true} />
                 <SidebarOption Icon={StarIcon} title="Starred" number={28} selected={false} />
                 <SidebarOption Icon={AccessTimeIcon} title="Snoozed" number={4} selected={false} />

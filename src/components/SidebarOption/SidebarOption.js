@@ -15,7 +15,8 @@ const sidebarClassGroup = (props, open) => {
 export const SidebarOption = (props) => {
     const { Icon, title, number } = props
     const { open } = useContext(SidebarContext)
-    console.log(open)
+
+
     return (
         <div className={sidebarClassGroup(props, open)}>
             <Icon />

@@ -5,7 +5,6 @@ export const SidebarContextProvider = ({ children }) => {
     const [open, setOpen] = React.useState(false)
 
     const activate = () => {
-        console.log("hello")
         setOpen(!open)
     }
     return (

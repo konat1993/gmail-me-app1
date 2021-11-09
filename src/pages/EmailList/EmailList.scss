@@ -1,5 +1,6 @@
 .emailList {
-    flex: 1;
+    width: 100%;
+    min-width: 600px;
     /* overflow: scroll;
 
     &::-webkit-scrollbar {
@@ -19,6 +20,8 @@
         z-index: 99999;
         padding-right: 10px;
         padding-left: 5px;
+        width: 100vw;
+        max-width: 100%;
 
         &__left {
         }
@@ -35,11 +38,11 @@
         margin-right: 50px;
 
         .emailList__sections {
-        //position: sticky;
-        //top: 119px;
-        display: flex;
-        border-bottom: 1px solid whitesmoke;
-        z-index: 999999;
-    }
+            //position: sticky;
+            //top: 119px;
+            display: flex;
+            border-bottom: 1px solid whitesmoke;
+            z-index: 999999;
+        }
     }
 }
