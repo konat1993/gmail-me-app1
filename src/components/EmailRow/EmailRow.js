@@ -7,7 +7,8 @@ import 'moment/locale/pl'
 import { useDispatch } from 'react-redux'
 import { selectMail } from '../../features/mailSlice'
 
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
+
 import { Avatar } from '@material-ui/core'
 import { Checkbox, IconButton } from '@material-ui/core'
 import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined'
@@ -30,6 +31,8 @@ const randomColorStyle = () => {
 export const EmailRow = (props) => {
     const { id, title, subject, description, time } = props
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const openMail = () => {
         dispatch(selectMail({
             id,
@@ -38,9 +41,8 @@ export const EmailRow = (props) => {
             description,
             time
         }))
-        history.push("/mail")
+        navigate("/mail")
     }
-    const history = useHistory()
     return (
         <div className="emailRow" onClick={openMail}>
             <div className="emailRow__avatar">
@@ -71,9 +73,6 @@ export const EmailRow = (props) => {
                 <Moment locale="pl" calendar={calendarStrings}>
                     {moment(time).format()}
                 </Moment>
-                {/* {moment(time).format('llll')} */}
-                {/* {' '} */}
-                {/* ({moment(time).startOf('seconds').fromNow()}) */}
             </p>
         </div>
     )

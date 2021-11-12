@@ -8,8 +8,8 @@ import { login, selectUser } from './features/userSlice';
 
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
+  Routes,
+  Route
 } from "react-router-dom";
 
 import Login from "./pages/Login/Login"
@@ -52,14 +52,14 @@ const App = () => {
             <div className="app__body">
               <Sidebar />
               <Sidebar mobileClassName="sidebarMobile" />
-              <Switch>
-                <Route path="/mail">
-                  <MailDetails />
-                </Route>
-                <Route path="/">
-                  <EmailList />
-                </Route>
-              </Switch>
+              <Routes>
+                <Route path="/mail" element={<MailDetails />} />
+                {/* <MailDetails /> */}
+                {/* </Route> */}
+                <Route path="/" element={<EmailList />} />
+                {/* <EmailList /> */}
+                {/* </Route> */}
+              </Routes>
             </div>
             {sendMessageIsOpen && <SendMail />}
           </div>

@@ -6,7 +6,7 @@ import 'moment/locale/pl'
 import { useSelector } from 'react-redux'
 import { selectOpenMail } from '../../features/mailSlice'
 
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 
 import { IconButton } from '@material-ui/core'
 
@@ -28,19 +28,18 @@ import "./MailDetails.scss"
 
 
 export const Mail = () => {
-
     const selectedMail = useSelector(selectOpenMail)
 
-    const history = useHistory()
+    const navigate = useNavigate()
 
     useEffect(() => {
-        !selectedMail && history.push("/")
+        !selectedMail && navigate("/")
     }, [selectedMail])
     return (
         <div className="mail">
             <div className="mail__tools">
                 <div className="tools__left">
-                    <IconButton onClick={() => history.push("/")}>
+                    <IconButton onClick={() => navigate("/")}>
                         <ArrowBackIcon />
                     </IconButton>
                     <IconButton>
