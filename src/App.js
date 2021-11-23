@@ -54,7 +54,7 @@ const App = () => {
               <Sidebar mobileClassName="sidebarMobile" />
               <Routes>
                 <Route path="/mail" element={<MailDetails />} />
-                <Route path="/" element={<EmailList />} />
+                <Route path="*" element={<EmailList />} />
               </Routes>
             </div>
             {sendMessageIsOpen && <SendMail />}
